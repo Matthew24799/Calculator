@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+}
+
+
+#calculator {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
