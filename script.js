@@ -1,4 +1,3 @@
-
 let num1 = parseInt(prompt("Enter first number"));
 let Operator = prompt("Enter Operator, +,-,*, or /");
 let num2 = parseInt(prompt("Enter second number"));
@@ -31,4 +30,5 @@ console.log("operator: " + Operator);
 console.log("num2: " + num2);
 
 console.log("Answer is: " + comeput());
+
 
