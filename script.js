@@ -4,7 +4,7 @@ let operator = ""
 let numkeys = document.querySelectorAll(".key");
 let opperators = document.querySelectorAll(".opp")
 let getDisplay = document.querySelector(".output");
-let equal = document.querySelector("#equal");
+let equal = document.querySelector(".equal");
 let currentState = "first";
 
 function add(...args) {
@@ -24,7 +24,9 @@ function divide(...args) {
     return args.reduce((total,item) => total / item )
 }
 
+function operate() {
 
+}
 
 function toDisplay(e) {
     const value = e.target.value
@@ -38,10 +40,30 @@ function toDisplay(e) {
     }
 };
 
+equal.addEventListener("click", function() {
+    let result;
+    switch(operator) {
+        case "+" : result = add(parseInt(firstNumber), parseInt(secondNumber));
+        break;
+        case "-": result = minus(parseInt(firstNumber), parseInt(secondNumber));
+        break;
+        case "*": result = multiply(parseInt(firstNumber), parseInt(secondNumber));
+        break;
+        case "/": result = divide(parseInt(firstNumber), parseInt(secondNumber));
+        break;
+        default: result = "error"
+        break;
+    }
+    getDisplay.textContent = result;
+    firstNumber = result;
+    secondNumber = "";
+    return result;
+
+});
 
 opperators.forEach((opp) => {
         opp.addEventListener("click", function (e) {
-            operator += e.target.value;
+            operator = e.target.value;
             currentState = "second" 
         })        
 });
