@@ -1,34 +1,52 @@
-let num1 = parseInt(prompt("Enter first number"));
-let Operator = prompt("Enter Operator, +,-,*, or /");
-let num2 = parseInt(prompt("Enter second number"));
+let firstNumber = ""
+let secondNumber = ""
+let operator = ""
+let numkeys = document.querySelectorAll(".key");
+let opperators = document.querySelectorAll(".opp")
+let getDisplay = document.querySelector(".output");
+let equal = document.querySelector("#equal");
+let currentState = "first";
 
-if(!isNaN(Operator)) {
-    Operator = prompt("MUST BE + , - , * OR / ");
+function add(...args) {
+    return args.reduce((total,item) => total + item)
+
+};
+
+function minus(...args) {
+    return args.reduce((total,item) => total - item)
+};
+
+function multiply(...args) {
+    return args.reduce((total,item) => total * item )
+}
+
+function divide(...args) {
+    return args.reduce((total,item) => total / item )
+}
+
+
+
+function toDisplay(e) {
+    const value = e.target.value
+    if(currentState === "first") {
+        firstNumber += value;
+        getDisplay.textContent = firstNumber;
+    
+    } else {
+        secondNumber += value;
+        getDisplay.textContent = secondNumber;
+    }
 };
 
 
-function comeput() {
-    let computation
-    const firstNum = num1;
-    const currentNum = num2;
+opperators.forEach((opp) => {
+        opp.addEventListener("click", function (e) {
+            operator += e.target.value;
+            currentState = "second" 
+        })        
+});
 
-    switch(Operator) {
-     case "+": computation = firstNum + currentNum;
-     break;
-     case "-": computation = firstNum - currentNum;
-     break;
-     case "*": computation = firstNum * currentNum;
-     break;
-     case "/": computation = firstNum / currentNum;
-     break;
-    };
-        return computation;
-};
-
-console.log("Num1: " + num1);
-console.log("operator: " + Operator);
-console.log("num2: " + num2);
-
-console.log("Answer is: " + comeput());
-
-
+numkeys.forEach((num) => {
+        num.addEventListener("click",toDisplay);
+});
+ 

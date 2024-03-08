@@ -2,20 +2,10 @@ body {
     margin: 0px;
 }
 
-
-#calculator {
+.calculator {
+    padding-top: 100px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
 }
 
-
-#display {
-    display: flex;
-    height: 100px;
-    width: 200px;
-    background-color: black;
-    color: white;
-}
